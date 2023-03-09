@@ -32,7 +32,7 @@ public class MainController {
 
         model.addAttribute("itemDtoList",itemDtoList);
 
-        return "pages/common/main";
+        return "pages/main";
     }
 
     @GetMapping("/join")                                //회원가입페이지 이동
