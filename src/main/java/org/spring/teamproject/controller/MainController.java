@@ -25,14 +25,14 @@ public class MainController {
     private final ItemService itemService;
 
 
-    @GetMapping("/index")                    //기본페이지설정
+    @GetMapping({"/", "", "/index"})                    //기본페이지설정
     public String index(Model model) {
 
         List<ItemDto> itemDtoList=itemService.itemList();
 
         model.addAttribute("itemDtoList",itemDtoList);
 
-        return "pages/main";
+        return "pages/common/main";
     }
 
     @GetMapping("/join")                                //회원가입페이지 이동
