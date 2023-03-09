@@ -32,19 +32,19 @@ public class MainController {
 
         model.addAttribute("itemDtoList",itemDtoList);
 
-        return "/pages/main";
+        return "pages/main";
     }
 
     @GetMapping("/join")                                //회원가입페이지 이동
     public String join(Model model) {
         model.addAttribute("memberDto", new MemberDto());
-        return "/pages/member/join";
+        return "pages/member/join";
     }
     @PostMapping("/join")                               //form 받아 회원가입실행
     public String joinPost(@Valid MemberDto memberDto,
                            BindingResult result) {
         if (result.hasErrors()) {
-            return "/pages/member/join";
+            return "pages/member/join";
         }
 
 //        Admin 입력하기
@@ -70,7 +70,7 @@ public class MainController {
     model.addAttribute("error",error);
     model.addAttribute("exception",exception);
 
-        return "/pages/member/login";
+        return "pages/member/login";
     }
 
 
