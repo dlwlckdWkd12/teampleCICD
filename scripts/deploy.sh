@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPOSITORY=/home/ec2-user/first_teample
+REPOSITORY=/home/ec2-user/teamproject
 cd $REPOSITORY
 
 APP_NAME=teamproject

@@ -3,9 +3,9 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ec2-user/first_teample/
+    destination: /home/ec2-user/teamproject/
 permissions:
-  - object: /home/ec2-user/first_teample/
+  - object: /home/ec2-user/teamproject/
     owner: ec2-user
     group: ec2-user
     mode: 755
