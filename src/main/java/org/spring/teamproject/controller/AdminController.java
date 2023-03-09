@@ -20,13 +20,13 @@ public class AdminController {
 
     @GetMapping({"/",""})                    //어드민 기본 페이지 설정
     public String adminpage() {
-        return "/pages/admin/adminindex";
+        return "pages/admin/adminindex";
     }
 
     @GetMapping("/memberList")
     public String memberList(Model model){
         List<MemberDto> memberList=memberService.memberListDo();
         model.addAttribute("memberList",memberList);
-        return "/pages/member/memberList";
+        return "pages/member/memberList";
     }
 }

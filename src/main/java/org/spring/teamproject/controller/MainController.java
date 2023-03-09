@@ -25,7 +25,7 @@ public class MainController {
     private final ItemService itemService;
 
 
-    @GetMapping({"/", "", "/index"})                    //기본페이지설정
+    @GetMapping("")                    //기본페이지설정
     public String index(Model model) {
 
         List<ItemDto> itemDtoList=itemService.itemList();
@@ -50,12 +50,12 @@ public class MainController {
 //        Admin 입력하기
         if(memberDto.getEmail().equals("admin@gmail.com")){
             memberService.insertAdmin(memberDto);
-            return "redirect:/login";
+            return "redirect:login";
         }
 
         memberService.insertMember(memberDto);
         System.out.println("회원가입 성공");
-        return "redirect:/login";
+        return "redirect:login";
     }
     @PostMapping("/emailChecked")                        //회원가입 email 중복체크버튼
     public @ResponseBody int nameChecked(

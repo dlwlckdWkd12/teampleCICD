@@ -32,7 +32,7 @@ public class TrackController {
     public String addView(Model model) {
         model.addAttribute("itemDto", new ItemDto());
 
-        return "/pages/track/trackInsert";
+        return "pages/track/trackInsert";
     }
 
     // track 추가 실행

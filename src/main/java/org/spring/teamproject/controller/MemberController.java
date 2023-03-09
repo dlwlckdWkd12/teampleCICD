@@ -18,18 +18,18 @@ public class MemberController {
     public String membermypage(@PathVariable String email, Model model) {
         MemberDto memberDto = memberService.memberDetail(email);
         model.addAttribute("member", memberDto);
-        return "/pages/member/mypage";
+        return "pages/member/mypage";
     }
     @GetMapping("/update/{email}")                           //나의 정보를 가져가서 회원수정페이지 입장
     public String info(@PathVariable String email, Model model) {
         MemberDto memberDto = memberService.memberDetail(email);
         model.addAttribute("member", memberDto);
-        return "/pages/member/update";
+        return "pages/member/update";
     }
     @PostMapping("/update")                                  //회원수정 실행
     public String updatePost(@ModelAttribute MemberDto memberDto) {
         memberService.updateOk(memberDto);
-        return "redirect:/";
+        return "redirect:";
     }
     @GetMapping("/delete/{no}")                             //회원 탈퇴후 security logout
     public String delete(@PathVariable Long no) {
@@ -39,7 +39,7 @@ public class MemberController {
             return null;
         }
         System.out.println("회원탈퇴 성공");
-        return "redirect:/logout";
+        return "redirect:logout";
     }
 
 }
