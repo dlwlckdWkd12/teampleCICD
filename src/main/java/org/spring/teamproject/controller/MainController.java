@@ -25,7 +25,7 @@ public class MainController {
     private final ItemService itemService;
 
 
-    @GetMapping("")                    //기본페이지설정
+    @GetMapping("/index")                    //기본페이지설정
     public String index(Model model) {
 
         List<ItemDto> itemDtoList=itemService.itemList();
