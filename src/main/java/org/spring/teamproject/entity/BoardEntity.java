@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "board_tb")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+//@Builder
 public class BoardEntity extends BaseEntity {
 
 	@Id

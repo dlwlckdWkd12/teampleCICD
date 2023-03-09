@@ -25,24 +25,24 @@ public class BoardCommentRestController {
 
 
     //    댓글 작성
-    @ResponseBody
-    @PostMapping(value="/comment/{no}")
-    public String showComment(@PathVariable("no") Long no, @RequestBody String replyDto) {
-        BoardEntity boardEntity = BoardEntity.builder()
-                .no(no)
-                .build();
-        ReplyDto result = new ReplyDto();
-        System.out.println("This is the username in replydto :"+replyDto);
-        result.setBoardId(boardEntity);
-//        ReplyDto가 ajax에서 stringify되면서 {"boardId":{no}, "re-content":{comment}} 전체가 들어간다.
-//        따라서 해당 데이터에서 split을 이용해서 넣어주도록 하자
-        String actualComment = replyDto.split("\"")[7];
-        String re_writer = replyDto.split("\"")[11];
-        result.setRe_writer(re_writer);
-        result.setRe_content(actualComment);
-        replyService.writeComment(result);
-        return replyDto;
-    }
+//    @ResponseBody
+//    @PostMapping(value="/comment/{no}")
+//    public String showComment(@PathVariable("no") Long no, @RequestBody String replyDto) {
+//        BoardEntity boardEntity = BoardEntity.builder()
+//                .no(no)
+//                .build();
+//        ReplyDto result = new ReplyDto();
+//        System.out.println("This is the username in replydto :"+replyDto);
+//        result.setBoardId(boardEntity);
+////        ReplyDto가 ajax에서 stringify되면서 {"boardId":{no}, "re-content":{comment}} 전체가 들어간다.
+////        따라서 해당 데이터에서 split을 이용해서 넣어주도록 하자
+//        String actualComment = replyDto.split("\"")[7];
+//        String re_writer = replyDto.split("\"")[11];
+//        result.setRe_writer(re_writer);
+//        result.setRe_content(actualComment);
+//        replyService.writeComment(result);
+//        return replyDto;
+//    }
 
 
     //    댓글 삭제
@@ -57,26 +57,26 @@ public class BoardCommentRestController {
         }
     }
 
-    // 댓글 수정
-    @ResponseBody
-    @PostMapping("/commentUpdate/{id}/{boardId}")
-    public void updateComment(@RequestBody String replyDto, @PathVariable("id") Long id, @PathVariable("boardId") Long no) {
-        ReplyDto reply = replyService.findComment(id);
-        BoardEntity boardEntity = BoardEntity.builder().no(no).build();
-
-        reply.setBoardId(boardEntity);
-        reply.setId(id);
-        System.out.println("This is the updated data"+replyDto);
-
-//        ReplyDto가 ajax에서 stringify되면서 {"boardId":{no}, "re-content":{comment}} 전체가 들어간다.
-//        따라서 해당 데이터에서 split을 이용해서 넣어주도록 하자
-        String actualComment = replyDto.split("\"")[11];
-        String commentWriter = replyDto.split("\"")[12];
-        reply.setRe_content(actualComment);
-        reply.setRe_writer(commentWriter);
-        if (reply != null) {
-            replyService.writeComment(reply);
-        }
-    }
+//    // 댓글 수정
+//    @ResponseBody
+//    @PostMapping("/commentUpdate/{id}/{boardId}")
+//    public void updateComment(@RequestBody String replyDto, @PathVariable("id") Long id, @PathVariable("boardId") Long no) {
+//        ReplyDto reply = replyService.findComment(id);
+//        BoardEntity boardEntity = BoardEntity.builder().no(no).build();
+//
+//        reply.setBoardId(boardEntity);
+//        reply.setId(id);
+//        System.out.println("This is the updated data"+replyDto);
+//
+////        ReplyDto가 ajax에서 stringify되면서 {"boardId":{no}, "re-content":{comment}} 전체가 들어간다.
+////        따라서 해당 데이터에서 split을 이용해서 넣어주도록 하자
+//        String actualComment = replyDto.split("\"")[11];
+//        String commentWriter = replyDto.split("\"")[12];
+//        reply.setRe_content(actualComment);
+//        reply.setRe_writer(commentWriter);
+//        if (reply != null) {
+//            replyService.writeComment(reply);
+//        }
+//    }
 
 }
